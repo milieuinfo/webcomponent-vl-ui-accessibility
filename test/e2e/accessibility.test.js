@@ -9,7 +9,8 @@ describe('vl-accessibility', async () => {
     return vlAccessibilityPage.load();
   });
 
-  it('', async () => {
-    assert.isTrue(true);
+  it('als gebruiker kan in de toegankelijkheid pagina zien', async () => {
+    const page = await vlAccessibilityPage.getAccessibilityElement();
+    await assert.eventually.isTrue(page.isDisplayed());
   });
 });
