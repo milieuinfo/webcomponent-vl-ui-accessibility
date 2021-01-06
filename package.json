@@ -1,0 +1,69 @@
+{
+	"name": "vl-ui-accessibility",
+	"version": "0.0.0",
+	"description": "Toegankelijkheid pagina",
+	"author": "DIDM",
+	"license": "MIT",
+	"main": "./src/index.js",
+	"exports": {
+		"require": "./index.js",
+		"import": "./src/index.js",
+		"node": "./index.js",
+		"default": "./index.js"
+	},
+	"homepage": "https://github.com/milieuinfo/webcomponent-vl-ui-accessibility#readme",
+	"bugs": {
+		"url": "https://github.com/milieuinfo/webcomponent-vl-ui-accessibility/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/milieuinfo/webcomponent-vl-ui-accessibility.git"
+	},
+	"publishConfig": {
+		"registry": "http://artifactory-pr-build.lb.cumuli.be:8081/artifactory/api/npm/acd-npm/"
+	},
+	"scripts": {
+		"prepare": "npm update --dev vl-ui-util && npm run prepare:util",
+		"prepare:util": "npm explore vl-ui-util -- npm run util",
+		"test": "npm explore vl-ui-util -- npm run test:component",
+		"test:grid": "npm explore vl-ui-util -- npm run test:component:grid",
+		"test:unit": "npm explore vl-ui-util -- npm run test:component:unit",
+		"test:unit:grid": "npm explore vl-ui-util -- npm run test:component:unit:grid",
+		"test:e2e": "npm explore vl-ui-util -- npm run test:component:e2e",
+		"test:e2e:grid": "npm explore vl-ui-util -- npm run test:component:e2e:browserstack",
+		"release": "npm explore vl-ui-util -- npm run release",
+		"release:prepare": "npm explore vl-ui-util -- npm run release-component:prepare $(pwd) accessibility",
+		"release:testless": "np --yolo",
+		"demo": "http-server"
+	},
+	"dependencies": {
+		"vl-ui-core": "^7.0.2",
+		"vl-ui-functional-header": "^1.2.9",
+		"vl-ui-grid": "^3.2.0",
+		"vl-ui-icon": "^5.2.1",
+		"vl-ui-introduction": "^1.0.5",
+		"vl-ui-link": "^4.0.7",
+		"vl-ui-side-navigation": "^1.0.0",
+		"vl-ui-titles": "^3.1.0",
+		"vl-ui-typography": "^3.1.3"
+	},
+	"peerDependencies": {
+		"vl-ui-core": "^7.0.2",
+		"vl-ui-functional-header": "^1.2.9",
+		"vl-ui-grid": "^3.2.0",
+		"vl-ui-icon": "^5.2.1",
+		"vl-ui-introduction": "^1.0.5",
+		"vl-ui-link": "^4.0.7",
+		"vl-ui-side-navigation": "^1.0.0",
+		"vl-ui-titles": "^3.1.0",
+		"vl-ui-typography": "^3.1.3"
+	},
+	"devDependencies": {
+		"@govflanders/vl-ui-util": "^3.12.3",
+		"vl-ui-body": "^1.0.7",
+		"vl-ui-footer": "^3.3.2",
+		"vl-ui-header": "^3.3.2",
+		"vl-ui-template": "^3.1.1",
+		"vl-ui-util": "^5.3.6"
+	}
+}
