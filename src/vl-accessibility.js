@@ -6,9 +6,6 @@ import '/node_modules/vl-ui-introduction/dist/vl-introduction.js';
 import '/node_modules/vl-ui-icon/dist/vl-icon.js';
 import '/node_modules/vl-ui-link/dist/vl-link.js';
 import '/node_modules/vl-ui-typography/dist/vl-typography.js';
-import '/node_modules/vl-ui-contact-card/dist/vl-contact-card.js';
-import '/node_modules/vl-ui-infoblock/dist/vl-infoblock.js';
-import '/node_modules/vl-ui-properties/dist/vl-properties.js';
 import '/node_modules/vl-ui-link/dist/vl-link.js';
 import '/node_modules/vl-ui-icon/dist/vl-icon.js';
 import '/node_modules/vl-ui-side-navigation/dist/vl-side-navigation-all.js';
@@ -41,7 +38,6 @@ export class VlAccessibility extends vlElement(HTMLElement) {
             @import '/node_modules/vl-ui-introduction/dist/style.css';
             @import '/node_modules/vl-ui-icon/dist/style.css';
             @import '/node_modules/vl-ui-link/dist/style.css';
-            @import '/node_modules/vl-ui-properties/dist/style.css';
             @import '/node_modules/vl-ui-link/dist/style.css';
             @import '/node_modules/vl-ui-icon/dist/style.css';
             @import '/node_modules/vl-ui-side-navigation/dist/style.css';
@@ -81,23 +77,11 @@ export class VlAccessibility extends vlElement(HTMLElement) {
                     <h2 is="vl-h2">Toegankelijkheidsverklaring</h2>
                     <p>De Vlaamse overheid streeft ernaar haar websites en (mobiele) toepassingen toegankelijk te maken, overeenkomstig het <a is="vl-link" href="http://www.ejustice.just.fgov.be/cgi_loi/loi_a1.pl?language=nl&cn=2018120705&table_name=wet&caller=list&fromtab=wet#LNK0011" target="_blank">bestuursdecreet van 7 december 2018<span is="vl-icon" data-vl-icon="external" data-vl-after data-vl-light></span></a> waarmee de <a is="vl-link" href="https://eur-lex.europa.eu/legal-content/NL/TXT/?uri=uriserv:OJ.L_.2016.327.01.0001.01.NLD&toc=OJ:L:2016:327:TOC" target="_blank">Europese Richtlijn 2016/2102<span is="vl-icon" data-vl-icon="external" data-vl-after data-vl-light></span></a> is omgezet.</p>
                     <br/>
-                    <p>Deze toegankelijkheidsverklaring is van toepassing op ${this.dataset.vlApplication}. en voldoet <span id="compliance-status"></span> aan de <a is="vl-link" href="https://www.w3.org/TR/WCAG21" target="_blank">Web Content Accessibility Guidelines versie 2.1 niveau AA<span is="vl-icon" data-vl-icon="external" data-vl-after data-vl-light></span></a>.</p>
-                    <p id="compliance-description">
-                      <br/>
-                      Er wordt momenteel onderzocht welke acties nodig zijn om volledig naar deze richtlijn te conformeren en er worden stelselmatig verbeteringen doorgevoerd.
-                    </p>
+                    <p>Deze toegankelijkheidsverklaring is van toepassing op ${this.dataset.vlApplication} en voldoet gedeeltelijk aan de <a is="vl-link" href="https://www.w3.org/TR/WCAG21" target="_blank">Web Content Accessibility Guidelines versie 2.1 niveau AA<span is="vl-icon" data-vl-icon="external" data-vl-after data-vl-light></span></a>.</p>
+                    <br/>
+                    <p>Er wordt momenteel onderzocht welke acties nodig zijn om volledig naar deze richtlijn te conformeren en er worden stelselmatig verbeteringen doorgevoerd.</p>
                     <br/>
                     <p>Deze toegankelijkheidsverklaring is opgesteld op ${this.dataset.vlDate} en werd voor het laatst herzien op ${this.dataset.vlDateModified}.</p>
-                  </div>
-
-                  <div id="accessibility-statement-non-compliance-content" is="vl-column" data-vl-size="12" data-vl-medium-size="12">
-                    <h3 is="vl-h3">Niet-toegankelijke inhoud</h3>
-                    <p>De onderstaande inhoud is nog niet toegankelijk om de volgende redenen:</p>
-                  </div>
-
-                  <div id="accessibility-statement-non-compliance-content-description" is="vl-column" data-vl-size="12" data-vl-medium-size="12">
-                    <h4 is="vl-h4">Niet-naleving van het bestuursdecreet</h4>
-                    <slot name="non-compliances"></slot>
                   </div>
 
                   <div id="accessibility-statement-browsers" is="vl-column" data-vl-size="12" data-vl-medium-size="12">
@@ -148,9 +132,6 @@ export class VlAccessibility extends vlElement(HTMLElement) {
                         <i class="vl-vi vl-vi-arrow-right-fat"></i>
                       </a>
                       <ul>
-                        <li id="accessibility-statement-non-compliance-content-navigation" is="vl-side-navigation-item">
-                          <div><a href="#accessibility-statement-non-compliance-content" data-vl-parent="accessibility-statement">Niet-toegankelijke inhoud</a></div>
-                        </li>
                         <li is="vl-side-navigation-item">
                           <div><a href="#accessibility-statement-browsers" data-vl-parent="accessibility-statement">Ondersteunde browsers</a></div>
                         </li>
@@ -186,75 +167,7 @@ export class VlAccessibility extends vlElement(HTMLElement) {
           </div>
         </div>
       </section>
-
-      <section is="vl-region" data-vl-overlap>
-        <div is="vl-layout">
-          <div is="vl-grid" data-vl-is-stacked>
-            <div is="vl-column" data-vl-size="12" data-vl-medium-size="12">
-              <vl-contact-card id="contact-card">
-                <vl-infoblock slot="info" data-vl-title="Departement Omgeving" data-vl-type="contact"></vl-infoblock>
-                <vl-properties slot="properties">
-                  <dl is="vl-properties-list">
-                    <dt is="vl-property-term">Adres</dt>
-                    <dd is="vl-property-value">Graaf de Ferrarisgebouw<br/>Koning Albert II laan 20 (bus 8)<br/>1000 Brussel, België</dd>
-                    <dt is="vl-property-term">Telefoon</dt>
-                    <dd is="vl-property-value"><a is="vl-link" href="tel:02 553 80 11">02 553 80 11<span is="vl-icon" data-vl-icon="phone" data-vl-after></span></a></dd>
-                    <dt is="vl-property-term">E-mail</dt>
-                    <dd is="vl-property-value"><a is="vl-link" href="mailto:omgeving@vlaanderen.be">omgeving@vlaanderen.be<span is="vl-icon" data-vl-icon="mail" data-vl-after></span></a></dd>
-                    <dt is="vl-property-term">Website</dt>
-                    <dd is="vl-property-value"><a is="vl-link" href="http://onderwijs.vlaanderen.be" target="_blank">http://onderwijs.vlaanderen.be<span is="vl-icon" data-vl-icon="external" data-vl-after></span></a></dd>
-                  </dl>
-                </vl-properties>
-              </vl-contact-card>
-            </div>
-          </div>
-        </div>
-      </section>
     `);
-  }
-
-  connectedCallback() {
-    this._processNonCompliances();
-  }
-
-  get _contentElement() {
-    return this.shadowRoot.querySelector('#content');
-  }
-
-  get _complianceStatusElement() {
-    return this._contentElement.querySelector('#compliance-status');
-  }
-
-  get _complianceDescriptionElement() {
-    return this._contentElement.querySelector('#compliance-description');
-  }
-
-  get _nonComplianceContentElement() {
-    return this._contentElement.querySelector('#accessibility-statement-non-compliance-content');
-  }
-
-  get _nonComlianceContentDescriptionElement() {
-    return this._contentElement.querySelector('#accessibility-statement-non-compliance-content-description');
-  }
-
-  get _nonComplianceContentNavigation() {
-    return this._contentElement.querySelector('#accessibility-statement-non-compliance-content-navigation');
-  }
-
-  get _hasNonCompliances() {
-    return this.querySelector('[slot="non-compliances"]');
-  }
-
-  _processNonCompliances() {
-    if (this._hasNonCompliances) {
-      this._complianceStatusElement.innerText = 'gedeeltelijk';
-    } else {
-      this._complianceStatusElement.innerText = 'volledig';
-      this._complianceDescriptionElement.remove();
-      this._nonComplianceContentElement.remove();
-      this._nonComlianceContentDescriptionElement.remove();
-      this._nonComplianceContentNavigation.remove();
-    }
   }
 }
 

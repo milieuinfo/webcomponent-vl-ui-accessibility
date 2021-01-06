@@ -37,29 +37,24 @@
 		"demo": "http-server"
 	},
 	"dependencies": {
-		"vl-ui-contact-card": "^1.0.0",
 		"vl-ui-core": "^7.0.2",
 		"vl-ui-functional-header": "^1.2.9",
 		"vl-ui-grid": "^3.2.0",
 		"vl-ui-icon": "^5.2.1",
-		"vl-ui-infoblock": "^3.0.8",
 		"vl-ui-introduction": "^1.0.5",
 		"vl-ui-link": "^4.0.7",
-		"vl-ui-properties": "^4.0.8",
-		"vl-ui-side-navigation": "github:milieuinfo/webcomponent-vl-ui-side-navigation",
+		"vl-ui-side-navigation": "^1.0.0",
 		"vl-ui-titles": "^3.1.0",
 		"vl-ui-typography": "^3.1.3"
 	},
 	"peerDependencies": {
-		"vl-ui-contact-card": "^1.0.0",
 		"vl-ui-core": "^7.0.2",
 		"vl-ui-functional-header": "^1.2.9",
 		"vl-ui-grid": "^3.2.0",
 		"vl-ui-icon": "^5.2.1",
-		"vl-ui-infoblock": "^3.0.8",
 		"vl-ui-introduction": "^1.0.5",
 		"vl-ui-link": "^4.0.7",
-		"vl-ui-properties": "^4.0.8",
+		"vl-ui-side-navigation": "^1.0.0",
 		"vl-ui-titles": "^3.1.0",
 		"vl-ui-typography": "^3.1.3"
 	},
@@ -69,6 +64,6 @@
 		"vl-ui-footer": "^3.3.2",
 		"vl-ui-header": "^3.3.2",
 		"vl-ui-template": "^3.1.1",
-		"vl-ui-util": "^5.3.5"
+		"vl-ui-util": "^5.3.6"
 	}
 }
