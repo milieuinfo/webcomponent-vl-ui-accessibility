@@ -7,7 +7,7 @@ class VlAccessibilityPage extends Page {
   }
 
   async load() {
-    await super.load(Config.baseUrl + '/demo/vl-accessibility.html');
+    await super.load(Config.baseUrl + '/demo/vl-accessibility-demo.html');
   }
 
   async _getAccessibility(selector) {
