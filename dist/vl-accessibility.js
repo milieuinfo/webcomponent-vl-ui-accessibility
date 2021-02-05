@@ -42,7 +42,7 @@ export class VlAccessibility extends vlElement(HTMLElement) {
             @import '/node_modules/vl-ui-icon/dist/style.css';
             @import '/node_modules/vl-ui-side-navigation/dist/style.css';
         </style>
-        <vl-functional-header data-vl-title="Departement Omgeving" data-vl-sub-title="Toegankelijkheid en gebruiksvoorwaarden" data-vl-link="/"></vl-functional-header>
+        <vl-functional-header data-vl-title="Departement Omgeving" data-vl-sub-title="Toegankelijkheid en gebruiksvoorwaarden" data-vl-link="https://omgeving.vlaanderen.be"></vl-functional-header>
     `);
 
     this._element.insertAdjacentHTML('afterend', `
