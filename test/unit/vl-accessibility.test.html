@@ -10,7 +10,57 @@
 </head>
 
 <body>
-  <script></script>
+  <test-fixture id="vl-accessibility-fixture">
+    <template>
+      <vl-accessibility></vl-accessibility>
+    </template>
+  </test-fixture>
+
+  <test-fixture id="vl-accessibility-customized-fixture">
+    <template>
+      <vl-accessibility data-vl-version="2.0" data-vl-date="3 december 1988" data-vl-application="Applicatie" data-vl-date-modified="3 december 2020"></vl-accessibility>
+    </template>
+  </test-fixture>
+
+  <script>
+    suite('vl-accessibility', () => {
+      test('heeft default een versie, datum, applicatie naam en datum wijziging', () => {
+        const element = fixture('vl-accessibility-fixture');
+        const version = element.shadowRoot.querySelector('#introduction-version');
+        const date1 = element.shadowRoot.querySelector('#introduction-date');
+        const date2 = element.shadowRoot.querySelector('#date');
+        const application = element.shadowRoot.querySelector('#application');
+        const date3 = element.shadowRoot.querySelector('#date-modified');
+        assert.equal(version.innerText, '1.0.0');
+        assert.equal(date1.innerText, '3 maart 2021');
+        assert.equal(date2.innerText, '3 maart 2021');
+        assert.equal(application.innerText, 'deze applicatie');
+        assert.equal(date3.innerText, '3 maart 2021');
+      });
+
+      test('de versie en datum kunnen geconfigureerd worden', () => {
+        const element = fixture('vl-accessibility-customized-fixture');
+        const version = element.shadowRoot.querySelector('#introduction-version');
+        const date1 = element.shadowRoot.querySelector('#introduction-date');
+        const date2 = element.shadowRoot.querySelector('#date');
+        assert.equal(version.innerText, element.dataset.vlVersion);
+        assert.equal(date1.innerText, element.dataset.vlDate);
+        assert.equal(date2.innerText, element.dataset.vlDate);
+      });
+
+      test('de applicatie naam kan geconfigureerd worden', () => {
+        const element = fixture('vl-accessibility-customized-fixture');
+        const application = element.shadowRoot.querySelector('#application');
+        assert.equal(application.innerText, element.dataset.vlApplication);
+      });
+
+      test('de datum van wijziging kan geconfigureerd worden', () => {
+        const element = fixture('vl-accessibility-customized-fixture');
+        const date = element.shadowRoot.querySelector('#date-modified');
+        assert.equal(date.innerText, element.dataset.vlDateModified);
+      });
+    });
+  </script>
 </body>
 
 </html>
