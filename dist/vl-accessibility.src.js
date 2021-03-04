@@ -18,10 +18,10 @@ import 'vl-ui-side-navigation';
  * @extends HTMLElement
  * @mixes vlElement
  *
- * @property {boolean} data-vl-application - Attribuut wordt gebruikt om aan te geven voor welke applicatie deze toegankelijkheidspagina van toepassing is.
- * @property {boolean} data-vl-date - Attribuut wordt gebruikt om aan te geven op welke datum deze toegankelijkheidspagina opgesteld werd.
- * @property {boolean} data-vl-date-modified - Attribuut wordt gebruikt om aan te geven op welke datum deze toegankelijkheidspagina het laatst gewijzigd werd.
- * @property {boolean} data-vl-version - Attribuut wordt gebruikt om de toegankelijkheidspagina versie aan te geven.
+ * @property {string} [data-vl-application="deze applicatie"] - Attribuut wordt gebruikt om aan te geven voor welke applicatie deze toegankelijkheidspagina van toepassing is.
+ * @property {string} [data-vl-date="3 maart 2021"] - Attribuut wordt gebruikt om aan te geven op welke datum deze toegankelijkheidspagina opgesteld werd.
+ * @property {string} [data-vl-date-modified="3 maart 2021"] - Attribuut wordt gebruikt om aan te geven op welke datum deze toegankelijkheidspagina het laatst gewijzigd werd.
+ * @property {string} [data-vl-version="1.0.0"] - Attribuut wordt gebruikt om de toegankelijkheidspagina versie aan te geven.
  *
  * @see {@link https://www.github.com/milieuinfo/webcomponent-vl-ui-accessibility/releases/latest|Release notes}
  * @see {@link https://www.github.com/milieuinfo/webcomponent-vl-ui-accessibility/issues|Issues}
@@ -6702,6 +6702,11 @@ a.vl-vi {
         <vl-functional-header data-vl-title="Departement Omgeving" data-vl-sub-title="Toegankelijkheid en gebruiksvoorwaarden" data-vl-link="https://omgeving.vlaanderen.be"></vl-functional-header>
     `);
 
+    const version = this.dataset.vlVersion || '1.0.0';
+    const date = this.dataset.vlDate || '3 maart 2021';
+    const application = this.dataset.vlApplication || 'deze applicatie';
+    const modifiedDate = this.dataset.vlDateModified || '3 maart 2021';
+
     this._element.insertAdjacentHTML('afterend', `
       <section is="vl-region">
         <div is="vl-layout">
@@ -6711,7 +6716,7 @@ a.vl-vi {
             </div>
             <div is="vl-column" data-vl-size="10">
               <p is="vl-introduction">
-                <span>Versie</span> ${this.dataset.vlVersion} - ${this.dataset.vlDate}
+                <span>Versie</span> <span id="introduction-version">${version}</span> - <span id="introduction-date">${date}</span>
               </p>
             </div>
 
@@ -6737,11 +6742,11 @@ a.vl-vi {
                       <div is="vl-column" data-vl-size="12" data-vl-medium-size="12">
                         <p>De Vlaamse overheid streeft ernaar haar websites en (mobiele) toepassingen toegankelijk te maken, overeenkomstig het <a is="vl-link" href="http://www.ejustice.just.fgov.be/cgi_loi/loi_a1.pl?language=nl&cn=2018120705&table_name=wet&caller=list&fromtab=wet#LNK0011" target="_blank">bestuursdecreet van 7 december 2018<span is="vl-icon" data-vl-icon="external" data-vl-after data-vl-light></span></a> waarmee de <a is="vl-link" href="https://eur-lex.europa.eu/legal-content/NL/TXT/?uri=uriserv:OJ.L_.2016.327.01.0001.01.NLD&toc=OJ:L:2016:327:TOC" target="_blank">Europese Richtlijn 2016/2102<span is="vl-icon" data-vl-icon="external" data-vl-after data-vl-light></span></a> is omgezet.</p>
                         <br/>
-                        <p>Deze toegankelijkheidsverklaring is van toepassing op ${this.dataset.vlApplication} en voldoet gedeeltelijk aan de <a is="vl-link" href="https://www.w3.org/TR/WCAG21" target="_blank">Web Content Accessibility Guidelines versie 2.1 niveau AA<span is="vl-icon" data-vl-icon="external" data-vl-after data-vl-light></span></a>.</p>
+                        <p>Deze toegankelijkheidsverklaring is van toepassing op <span id="application">${application}</span> en voldoet gedeeltelijk aan de <a is="vl-link" href="https://www.w3.org/TR/WCAG21" target="_blank">Web Content Accessibility Guidelines versie 2.1 niveau AA<span is="vl-icon" data-vl-icon="external" data-vl-after data-vl-light></span></a>.</p>
                         <br/>
                         <p>Er wordt momenteel onderzocht welke acties nodig zijn om volledig naar deze richtlijn te conformeren en er worden stelselmatig verbeteringen doorgevoerd.</p>
                         <br/>
-                        <p>Deze toegankelijkheidsverklaring is opgesteld op ${this.dataset.vlDate} en werd voor het laatst herzien op ${this.dataset.vlDateModified}.</p>
+                        <p>Deze toegankelijkheidsverklaring is opgesteld op <span id="date">${date}</span> en werd voor het laatst herzien op <span id="date-modified">${modifiedDate}</span>.</p>
                       </div>
 
                       <div id="accessibility-statement-browsers" is="vl-column" data-vl-size="12" data-vl-medium-size="12">
