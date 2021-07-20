@@ -34,7 +34,9 @@
 		"release": "npm explore vl-ui-util -- npm run release",
 		"release:prepare": "npm explore vl-ui-util -- npm run release-component:prepare $(pwd) accessibility",
 		"release:testless": "np --yolo",
-		"demo": "http-server"
+		"demo": "http-server",
+		"storybook": "start-storybook -s ./",
+    "build-storybook": "build-storybook"
 	},
 	"dependencies": {
 		"vl-ui-core": "^7.1.3",
@@ -64,6 +66,11 @@
 		"vl-ui-footer": "^3.3.3",
 		"vl-ui-header": "^3.3.3",
 		"vl-ui-template": "^3.1.2",
-		"vl-ui-util": "^5.3.8"
+		"vl-ui-util": "^5.3.8",
+		"@storybook/addon-essentials": "^6.3.2",
+    "@storybook/addon-links": "^6.3.2",
+    "@storybook/web-components": "^6.3.2",
+    "babel-loader": "^8.2.2",
+    "lit-html": "^1.4.1"
 	}
 }
