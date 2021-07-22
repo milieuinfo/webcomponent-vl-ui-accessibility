@@ -9,7 +9,9 @@ import 'vl-ui-typography/dist/vl-typography.js';
 import 'vl-ui-link/dist/vl-link.js';
 import 'vl-ui-icon/dist/vl-icon.js';
 import 'vl-ui-side-navigation/dist/vl-side-navigation-all.js';
-import { template } from './template';
+import 'vl-ui-properties/dist/vl-properties.js';
+import 'vl-ui-data-table/dist/vl-data-table.js';
+import { template } from './template.html';
 
 /**
  * VlAccessibility
@@ -36,7 +38,8 @@ const props = {
   date: 'data-vl-date',
   dateModified: 'data-vl-date-modified',
 };
-export class VlAccessibility extends vlElement(HTMLElement) {
+
+export class VlAccessibilityStatement extends vlElement(HTMLElement) {
   static get observedAttributes() {
     return Object.keys(props).map((key) => props[key]);
   }
@@ -98,4 +101,4 @@ export class VlAccessibility extends vlElement(HTMLElement) {
   }
 }
 
-define('vl-accessibility', VlAccessibility);
+define('vl-accessibility-statement', VlAccessibilityStatement);

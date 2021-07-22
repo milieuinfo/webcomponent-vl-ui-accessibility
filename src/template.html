@@ -6,8 +6,8 @@ export const template = `<style>
   @import '/node_modules/vl-ui-introduction/dist/style.css';
   @import '/node_modules/vl-ui-icon/dist/style.css';
   @import '/node_modules/vl-ui-link/dist/style.css';
-  @import '/node_modules/vl-ui-link/dist/style.css';
   @import '/node_modules/vl-ui-icon/dist/style.css';
+  @import '/node_modules/vl-ui-properties/dist/style.css';
 </style>
 <vl-functional-header
   data-vl-title="Departement Omgeving"
@@ -92,25 +92,82 @@ export const template = `<style>
                 <div id="inaccessible-content" is="vl-column" data-vl-size="12" data-vl-medium-size="12">
                   <h3 is="vl-h3">Niet-toegankelijke inhoud</h3>
                   <p>De onderstaande inhoud is niet-toegankelijk om de volgende reden(en):</p>
-                  <br />
-                  <div>
-                    <p>a) niet-naleving van het bestuursdecreet</p>
-                    <p>
-                      [opsomming van WCAG criteria waaraan nog niet is voldaan en/of inhoud die nog niet voldoet maar
-                      die wel nog wordt aangepakt in toekomstige updates, eventuele tijdelijke alternatieven vermelden
-                      en timing vermelden]
-                    </p>
-                    <br />
-                  </div>
-                  <div>
-                    <p>b) onevenredige last</p>
-                    <p>
-                      [opsomming van inhoud die niet voldoet aan WCAG en ook niet wordt aangepakt op grond van
-                      onevenredige last, eventuele alternatieven vermelden]
-                    </p>
-                    <br />
-                  </div>
-                  <div>c) de inhoud valt buiten de werkingssfeer van de toepasselijke wetgeving</div>
+                  <vl-typography>
+                    <ol>
+                      <li>
+                        <p>Niet-naleving van het bestuursdecreet</p>
+                        <ul>
+                          <vl-accessibility-limitation
+                            data-vl-description="Outline is niet voldoende zichtbaar"
+                            data-vl-alternative=""
+                            data-vl-timing=""
+                          ></vl-accessibility-limitation>
+                          <li>
+                            <vl-properties>
+                              <p>
+                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut."
+                              </p>
+                              <dl is="vl-properties-list">
+                                <dt is="vl-property-term">Alternatief</dt>
+                                <dd is="vl-property-value">Peeters</dd>
+                                <dt is="vl-property-term">Timing</dt>
+                                <dd is="vl-property-value">Peeters</dd>
+                              </dl>
+                            </vl-properties>
+                          </li>
+                          <li>
+                            <vl-properties>
+                              <p>
+                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut."
+                              </p>
+                              <dl is="vl-properties-list">
+                                <dt is="vl-property-term">Voornaam</dt>
+                                <dd is="vl-property-value">Koen</dd>
+                                <dt is="vl-property-term">Naam</dt>
+                                <dd is="vl-property-value">Peeters</dd>
+                              </dl>
+                            </vl-properties>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <p>Onevenredige last</p>
+                        <ul>
+                          <li>
+                            <vl-properties>
+                              <p>
+                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut."
+                              </p>
+                              <dl is="vl-properties-list">
+                                <dt is="vl-property-term">Alternatief</dt>
+                                <dd is="vl-property-value">Peeters</dd>
+                              </dl>
+                            </vl-properties>
+                          </li>
+                          <li>
+                            <vl-properties>
+                              <p>
+                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut."
+                              </p>
+                              <dl is="vl-properties-list">
+                                <dt is="vl-property-term">Voornaam</dt>
+                                <dd is="vl-property-value">Koen</dd>
+                              </dl>
+                            </vl-properties>
+                          </li>
+                        </ul>
+                      </li>
+                      <li><p>De inhoud valt buiten de werkingssfeer van de toepasselijke wetgeving</p></li>
+                    </ol>
+                  </vl-typography>
                 </div>
                 <div id="setup-accessibility-statement" is="vl-column" data-vl-size="12" data-vl-medium-size="12">
                   <h3 is="vl-h3">Opstelling van deze toegankelijkheidsverklaring</h3>
@@ -145,11 +202,11 @@ export const template = `<style>
               </p>
             </div>
             <div id="enforcement-procedure" is="vl-column" data-vl-size="12" data-vl-medium-size="12">
-              <h2 is="vl-h2">Handhavingsprocedure</h3>
+              <h2 is="vl-h2">Handhavingsprocedure</h2>
               <p>
                 [Geef een beschrijving van, en een link naar, de handhavingsprocedure die moet worden gevolgd in het
-                geval van onbevredigende antwoorden op kennisgevingen of verzoeken die overeenkomstig artikel 7, lid
-                1, onder b), van de Richtlijn zijn verstuurd.]
+                geval van onbevredigende antwoorden op kennisgevingen of verzoeken die overeenkomstig artikel 7, lid 1,
+                onder b), van de Richtlijn zijn verstuurd.]
               </p>
               <br />
               <p>[Contactgegevens van de betrokken handhavingsinstantie.]</p>
@@ -194,20 +251,14 @@ export const template = `<style>
                 </ul>
               </li>
               <li is="vl-side-navigation-item" data-vl-parent>
-                <a
-                  is="vl-side-navigation-toggle"
-                  href="#feedback-contact"
-                >
-                Feedback en contactgegevens
+                <a is="vl-side-navigation-toggle" href="#feedback-contact">
+                  Feedback en contactgegevens
                   <i class="vl-vi vl-vi-arrow-right-fat"></i>
                 </a>
               </li>
               <li is="vl-side-navigation-item" data-vl-parent>
-                <a
-                  is="vl-side-navigation-toggle"
-                  href="#enforcement-procedure"
-                >
-                Handhavingsprocedure
+                <a is="vl-side-navigation-toggle" href="#enforcement-procedure">
+                  Handhavingsprocedure
                   <i class="vl-vi vl-vi-arrow-right-fat"></i>
                 </a>
               </li>

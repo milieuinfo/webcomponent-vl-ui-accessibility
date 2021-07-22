@@ -15803,6 +15803,13 @@ vl-ui-link@^4.0.8, vl-ui-link@^4.1.0:
   dependencies:
     vl-ui-core "^7.2.4"
 
+vl-ui-properties@^4.0.10:
+  version "4.1.0"
+  resolved "https://repo.omgeving.vlaanderen.be/artifactory/api/npm/acd-npm/vl-ui-properties/-/vl-ui-properties-4.1.0.tgz#145b581823af7d43f50949a312ae214fbd1dbc40"
+  integrity sha1-FFtYGCOvfUP1CUmjEq4hT70dvEA=
+  dependencies:
+    vl-ui-core "^7.2.4"
+
 vl-ui-side-navigation@^1.0.1:
   version "1.0.1"
   resolved "https://repo.omgeving.vlaanderen.be/artifactory/api/npm/acd-npm/vl-ui-side-navigation/-/vl-ui-side-navigation-1.0.1.tgz#df661badf523f18a082478abfb3aa748328ad66a"
@@ -15832,10 +15839,10 @@ vl-ui-typography@^3.1.4:
   dependencies:
     vl-ui-core "^7.2.4"
 
-vl-ui-util@^5.3.8:
-  version "5.5.1"
-  resolved "https://repo.omgeving.vlaanderen.be/artifactory/api/npm/acd-npm/vl-ui-util/-/vl-ui-util-5.5.1.tgz#dd5c62e7a1fe50a72a6e9dcef001360b137aea57"
-  integrity sha1-3Vxi56H+UKcqbp3O8AE2CxN66lc=
+vl-ui-util@^5.5.1:
+  version "5.6.0"
+  resolved "https://repo.omgeving.vlaanderen.be/artifactory/api/npm/acd-npm/vl-ui-util/-/vl-ui-util-5.6.0.tgz#f5637cc072b95a9c2d1b576c866062000ff9d38e"
+  integrity sha1-9WN8wHK5WpwtG1dshmBiAA/5044=
   dependencies:
     axe-webdriverjs "^2.3.0"
     browserstack-local "^1.4.8"

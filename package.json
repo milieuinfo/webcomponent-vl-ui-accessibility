@@ -36,7 +36,7 @@
 		"release:testless": "np --yolo",
 		"demo": "http-server",
 		"storybook": "start-storybook -s ./",
-    "build-storybook": "build-storybook"
+		"build-storybook": "build-storybook"
 	},
 	"dependencies": {
 		"vl-ui-core": "^7.1.3",
@@ -47,7 +47,9 @@
 		"vl-ui-link": "^4.0.8",
 		"vl-ui-side-navigation": "^1.0.1",
 		"vl-ui-titles": "^3.1.1",
-		"vl-ui-typography": "^3.1.4"
+		"vl-ui-typography": "^3.1.4",
+		"vl-ui-data-table": "^4.0.5",
+		"vl-ui-properties": "^4.0.10"
 	},
 	"peerDependencies": {
 		"vl-ui-core": "^7.1.0",
@@ -58,19 +60,20 @@
 		"vl-ui-link": "^4.0.7",
 		"vl-ui-side-navigation": "^1.0.0",
 		"vl-ui-titles": "^3.1.0",
-		"vl-ui-typography": "^3.1.3"
+		"vl-ui-typography": "^3.1.3",
+		"vl-ui-properties": "^4.0.10"
 	},
 	"devDependencies": {
 		"@govflanders/vl-ui-util": "^3.12.3",
+		"@storybook/addon-essentials": "^6.3.2",
+		"@storybook/addon-links": "^6.3.2",
+		"@storybook/web-components": "^6.3.2",
+		"babel-loader": "^8.2.2",
+		"lit-html": "^1.4.1",
 		"vl-ui-body": "^1.0.8",
 		"vl-ui-footer": "^3.3.3",
 		"vl-ui-header": "^3.3.3",
 		"vl-ui-template": "^3.1.2",
-		"vl-ui-util": "^5.3.8",
-		"@storybook/addon-essentials": "^6.3.2",
-    "@storybook/addon-links": "^6.3.2",
-    "@storybook/web-components": "^6.3.2",
-    "babel-loader": "^8.2.2",
-    "lit-html": "^1.4.1"
+		"vl-ui-util": "^5.6.0"
 	}
 }
