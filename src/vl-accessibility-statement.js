@@ -11,10 +11,10 @@ import 'vl-ui-icon/dist/vl-icon.js';
 import 'vl-ui-side-navigation/dist/vl-side-navigation-all.js';
 import 'vl-ui-properties/dist/vl-properties.js';
 import 'vl-ui-data-table/dist/vl-data-table.js';
-import { template } from './template.html';
+import { template } from './template.js';
 
 /**
- * VlAccessibility
+ * VlAccessibilityStatement
  * @class
  * @classdesc Toegankelijkheid pagina
  *
@@ -66,7 +66,19 @@ export class VlAccessibilityStatement extends vlElement(HTMLElement) {
   }
 
   connectedCallback() {
-    this.init();
+    this.changeElement(this.versionElement, this.getAttribute(props.version) || '1.0.0');
+    this.changeElement(this.applicationElement, this.getAttribute(props.application) || 'deze applicatie');
+    this.dateElements.forEach((element) =>
+      this.changeElement(element, this.getAttribute(props.date) || '20 juli 2021'),
+    );
+    this.changeElement(this.dateModifiedElement, this.getAttribute(props.dateModified) || '20 juli 2021');
+    this.limitationChildren.forEach((child) => {
+      if (child.hasAttribute('data-vl-timing')) {
+        this.temporaryLimitationElement.appendChild(child);
+      } else {
+        this.permanentLimitationElement.appendChild(child);
+      }
+    });
   }
 
   get versionElement() {
@@ -85,13 +97,16 @@ export class VlAccessibilityStatement extends vlElement(HTMLElement) {
     return this.shadowRoot.querySelector('#date-modified');
   }
 
-  init() {
-    this.changeElement(this.versionElement, this.getAttribute(props.version) || '1.0.0');
-    this.changeElement(this.applicationElement, this.getAttribute(props.application) || 'deze applicatie');
-    this.dateElements.forEach((element) =>
-      this.changeElement(element, this.getAttribute(props.date) || '20 juli 2021'),
-    );
-    this.changeElement(this.dateModifiedElement, this.getAttribute(props.dateModified) || '20 juli 2021');
+  get temporaryLimitationElement() {
+    return this.shadowRoot.querySelector('#temporary-limitations');
+  }
+
+  get permanentLimitationElement() {
+    return this.shadowRoot.querySelector('#permanent-limitations');
+  }
+
+  get limitationChildren() {
+    return this.querySelectorAll('vl-accessibility-limitation');
   }
 
   changeElement(element, value) {

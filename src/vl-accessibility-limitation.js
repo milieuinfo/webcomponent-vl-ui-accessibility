@@ -1,4 +1,4 @@
-import { vlElement, define } from 'vl-ui-core/dist/vl-core.js';
+import { define } from 'vl-ui-core/dist/vl-core.js';
 import 'vl-ui-properties/dist/vl-properties.js';
 import 'vl-ui-typography/dist/vl-typography.js';
 
@@ -8,7 +8,22 @@ const props = {
   timing: 'data-vl-timing',
 };
 
-export class VlAccessibilityLimitation extends vlElement(HTMLElement) {
+const template = `
+  <style>
+    @import '/node_modules/vl-ui-properties/dist/style.css';
+  </style>
+  <li>
+    <p id="description"></p>
+    <vl-properties>
+      <dl is="vl-properties-list" id="properties-list">
+        <dt is="vl-property-term">Alternatief</dt>
+        <dd is="vl-property-value" id="alternative"></dd>
+      </dl>
+    </vl-properties>
+  </li>
+`;
+
+export class VlAccessibilityLimitation extends HTMLElement {
   static get observedAttributes() {
     return Object.keys(props).map((key) => props[key]);
   }
@@ -28,21 +43,11 @@ export class VlAccessibilityLimitation extends vlElement(HTMLElement) {
   }
 
   constructor() {
-    super(`
-      <vl-typography>
-        <li>
-          <vl-properties>
-            <p id="description"></p>
-            <dl is="vl-properties-list" id="properties-list">
-              <dt is="vl-property-term">Alternatief</dt>
-              <dd is="vl-property-value" id="alternative"></dd>
-            </dl>
-          </vl-properties>
-        </li>
-      </vl-typography>`);
+    super();
   }
 
   connectedCallback() {
+    this.innerHTML = template;
     this.changeElement(this.descriptionElement, this.getAttribute(props.description));
     this.changeElement(this.alternativeElement, this.getAttribute(props.alternative));
     this.getAttribute(props.timing) && this.propertiesListElement.insertAdjacentHTML('beforeend', this.timingTemplate);
@@ -54,19 +59,19 @@ export class VlAccessibilityLimitation extends vlElement(HTMLElement) {
   }
 
   get descriptionElement() {
-    return this.shadowRoot.querySelector('#description');
+    return this.querySelector('#description');
   }
 
   get alternativeElement() {
-    return this.shadowRoot.querySelector('#alternative');
+    return this.querySelector('#alternative');
   }
 
   get propertiesListElement() {
-    return this.shadowRoot.querySelector('#properties-list');
+    return this.querySelector('#properties-list');
   }
 
   get timingElement() {
-    return this.shadowRoot.querySelector('#timing');
+    return this.querySelector('#timing');
   }
 
   changeElement(element, value) {
