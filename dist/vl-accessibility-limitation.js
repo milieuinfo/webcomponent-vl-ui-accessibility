@@ -1,6 +1,23 @@
-import { define } from 'vl-ui-core/dist/vl-core.js';
-import 'vl-ui-properties/dist/vl-properties.js';
-import 'vl-ui-typography/dist/vl-typography.js';
+import { define } from '/node_modules/vl-ui-core/dist/vl-core.js';
+import '/node_modules/vl-ui-properties/dist/vl-properties.js';
+import '/node_modules/vl-ui-typography/dist/vl-typography.js';
+
+/**
+ * VlAccessibilityLimitation
+ * @class
+ * @classdesc Toegankelijkheids beperking
+ *
+ * @extends HTMLElement
+ *
+ * @property {string} data-vl-description - Attribuut wordt gebruikt om een bescrhijving te geven aan de beperking.
+ * @property {string} data-vl-alternative - Attribuut wordt gebruikt om een alternatief op de beperking te beschrijven.
+ * @property {string} data-vl-timing - Attribuut wordt gebruikt om aan te geven wanneer de beperking.
+ *
+ * @see {@link https://www.github.com/milieuinfo/webcomponent-vl-ui-accessibility/releases/latest|Release notes}
+ * @see {@link https://www.github.com/milieuinfo/webcomponent-vl-ui-accessibility/issues|Issues}
+ * @see {@link https://webcomponenten.omgeving.vlaanderen.be/demo/vl-accessibility.html|Demo}
+ *
+ */
 
 const props = {
   description: 'data-vl-description',

@@ -1,16 +1,15 @@
-import { vlElement, define } from 'vl-ui-core/dist/vl-core.js';
-import 'vl-ui-functional-header/dist/vl-functional-header.js';
-import 'vl-ui-grid/dist/vl-grid.js';
-import 'vl-ui-titles/dist/vl-titles.js';
-import 'vl-ui-introduction/dist/vl-introduction.js';
-import 'vl-ui-icon/dist/vl-icon.js';
-import 'vl-ui-link/dist/vl-link.js';
-import 'vl-ui-typography/dist/vl-typography.js';
-import 'vl-ui-link/dist/vl-link.js';
-import 'vl-ui-icon/dist/vl-icon.js';
-import 'vl-ui-side-navigation/dist/vl-side-navigation-all.js';
-import 'vl-ui-properties/dist/vl-properties.js';
-import 'vl-ui-data-table/dist/vl-data-table.js';
+import { vlElement, define } from '/node_modules/vl-ui-core/dist/vl-core.js';
+import '/node_modules/vl-ui-functional-header/dist/vl-functional-header.js';
+import '/node_modules/vl-ui-grid/dist/vl-grid.js';
+import '/node_modules/vl-ui-titles/dist/vl-titles.js';
+import '/node_modules/vl-ui-introduction/dist/vl-introduction.js';
+import '/node_modules/vl-ui-icon/dist/vl-icon.js';
+import '/node_modules/vl-ui-link/dist/vl-link.js';
+import '/node_modules/vl-ui-typography/dist/vl-typography.js';
+import '/node_modules/vl-ui-link/dist/vl-link.js';
+import '/node_modules/vl-ui-icon/dist/vl-icon.js';
+import '/node_modules/vl-ui-side-navigation/dist/vl-side-navigation-all.js';
+import '/node_modules/vl-ui-properties/dist/vl-properties.js';
 import { template } from './template.js';
 
 /**

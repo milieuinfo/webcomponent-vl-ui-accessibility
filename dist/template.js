@@ -7,7 +7,6 @@ export const template = `<style>
   @import '/node_modules/vl-ui-icon/dist/style.css';
   @import '/node_modules/vl-ui-link/dist/style.css';
   @import '/node_modules/vl-ui-icon/dist/style.css';
-  @import '/node_modules/vl-ui-properties/dist/style.css';
 </style>
 <vl-functional-header
   data-vl-title="Departement Omgeving"
@@ -96,74 +95,11 @@ export const template = `<style>
                     <ol>
                       <li>
                         <p>Niet-naleving van het bestuursdecreet</p>
-                        <ul>
-                          <vl-accessibility-limitation
-                            data-vl-description="Outline is niet voldoende zichtbaar"
-                            data-vl-alternative=""
-                            data-vl-timing=""
-                          ></vl-accessibility-limitation>
-                          <li>
-                            <vl-properties>
-                              <p>
-                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut."
-                              </p>
-                              <dl is="vl-properties-list">
-                                <dt is="vl-property-term">Alternatief</dt>
-                                <dd is="vl-property-value">Peeters</dd>
-                                <dt is="vl-property-term">Timing</dt>
-                                <dd is="vl-property-value">Peeters</dd>
-                              </dl>
-                            </vl-properties>
-                          </li>
-                          <li>
-                            <vl-properties>
-                              <p>
-                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut."
-                              </p>
-                              <dl is="vl-properties-list">
-                                <dt is="vl-property-term">Voornaam</dt>
-                                <dd is="vl-property-value">Koen</dd>
-                                <dt is="vl-property-term">Naam</dt>
-                                <dd is="vl-property-value">Peeters</dd>
-                              </dl>
-                            </vl-properties>
-                          </li>
-                        </ul>
+                        <ul id="temporary-limitations"></ul>
                       </li>
                       <li>
                         <p>Onevenredige last</p>
-                        <ul>
-                          <li>
-                            <vl-properties>
-                              <p>
-                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut."
-                              </p>
-                              <dl is="vl-properties-list">
-                                <dt is="vl-property-term">Alternatief</dt>
-                                <dd is="vl-property-value">Peeters</dd>
-                              </dl>
-                            </vl-properties>
-                          </li>
-                          <li>
-                            <vl-properties>
-                              <p>
-                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut."
-                              </p>
-                              <dl is="vl-properties-list">
-                                <dt is="vl-property-term">Voornaam</dt>
-                                <dd is="vl-property-value">Koen</dd>
-                              </dl>
-                            </vl-properties>
-                          </li>
-                        </ul>
+                        <ul id="permanent-limitations"></ul>
                       </li>
                       <li><p>De inhoud valt buiten de werkingssfeer van de toepasselijke wetgeving</p></li>
                     </ol>
