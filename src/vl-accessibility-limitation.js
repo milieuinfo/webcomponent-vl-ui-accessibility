@@ -1,6 +1,6 @@
-import { define } from '/node_modules/vl-ui-core/dist/vl-core.js';
-import '/node_modules/vl-ui-properties/dist/vl-properties.js';
-import '/node_modules/vl-ui-typography/dist/vl-typography.js';
+import { define } from 'vl-ui-core/dist/vl-core.js';
+import 'vl-ui-properties/dist/vl-properties.js';
+import 'vl-ui-typography/dist/vl-typography.js';
 
 /**
  * VlAccessibilityLimitation
