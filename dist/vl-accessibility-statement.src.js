@@ -1,15 +1,15 @@
-import { vlElement, define } from 'vl-ui-core';
-import 'vl-ui-functional-header';
-import 'vl-ui-grid';
-import 'vl-ui-titles';
-import 'vl-ui-introduction';
-import 'vl-ui-icon';
-import 'vl-ui-link';
-import 'vl-ui-typography';
-import 'vl-ui-link';
-import 'vl-ui-icon';
-import 'vl-ui-side-navigation';
-import 'vl-ui-properties';
+import { vlElement, define } from 'vl-ui-core/dist/vl-core.js';
+import 'vl-ui-functional-header/dist/vl-functional-header.js';
+import 'vl-ui-grid/dist/vl-grid.js';
+import 'vl-ui-titles/dist/vl-titles.js';
+import 'vl-ui-introduction/dist/vl-introduction.js';
+import 'vl-ui-icon/dist/vl-icon.js';
+import 'vl-ui-link/dist/vl-link.js';
+import 'vl-ui-typography/dist/vl-typography.js';
+import 'vl-ui-link/dist/vl-link.js';
+import 'vl-ui-icon/dist/vl-icon.js';
+import 'vl-ui-side-navigation/dist/vl-side-navigation-all.js';
+import 'vl-ui-properties/dist/vl-properties.js';
 
 /**
  * VlAccessibilityStatement
