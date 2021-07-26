@@ -35,7 +35,7 @@
 		"release:prepare": "npm explore vl-ui-util -- npm run release-component:prepare $(pwd) accessibility",
 		"release:testless": "np --yolo",
 		"demo": "http-server",
-		"storybook": "start-storybook -s ./ -p 8080",
+		"storybook": "start-storybook -s ./ -p 8000",
 		"build-storybook": "build-storybook"
 	},
 	"dependencies": {
@@ -48,7 +48,6 @@
 		"vl-ui-side-navigation": "^1.0.1",
 		"vl-ui-titles": "^3.1.1",
 		"vl-ui-typography": "^3.1.4",
-		"vl-ui-data-table": "^4.0.5",
 		"vl-ui-properties": "^4.0.10"
 	},
 	"peerDependencies": {
