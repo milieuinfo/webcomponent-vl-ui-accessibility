@@ -35,6 +35,13 @@ const props = {
   application: 'data-vl-application',
   date: 'data-vl-date',
   dateModified: 'data-vl-date-modified',
+  compliance: 'data-vl-compliance',
+};
+
+const COMPLIANCE_STATUS = {
+  FULLY_COMPLIANT: 'fully-compliant',
+  PARTIALLY_COMPLIANT: 'partially-compliant',
+  NOT_COMPLIANT: 'not-compliant',
 };
 
 const template = `<style>
@@ -114,36 +121,9 @@ const template = `<style>
                 </div>
                 <div id="compliance-status" is="vl-column" data-vl-size="12" data-vl-medium-size="12">
                   <h3 is="vl-h3">Nalevingsstatus</h3>
-                  <p>
-                    Deze website voldoet gedeeltelijk aan de
-                    <a is="vl-link" href="https://www.w3.org/TR/WCAG21" target="_blank"
-                      >Web Content Accessibility Guidelines versie 2.1 niveau AA<span
-                        is="vl-icon"
-                        data-vl-icon="external"
-                        data-vl-after
-                        data-vl-light
-                      ></span
-                    ></a>
-                    omdat nog niet aan de onderstaande eisen is voldaan.
-                  </p>
+                  <p></p>
                 </div>
-                <div id="inaccessible-content" is="vl-column" data-vl-size="12" data-vl-medium-size="12">
-                  <h3 is="vl-h3">Niet-toegankelijke inhoud</h3>
-                  <p>De onderstaande inhoud is niet-toegankelijk om de volgende reden(en):</p>
-                  <vl-typography>
-                    <ol>
-                      <li>
-                        <p>Niet-naleving van het bestuursdecreet</p>
-                        <ul id="temporary-limitations"></ul>
-                      </li>
-                      <li>
-                        <p>Onevenredige last</p>
-                        <ul id="permanent-limitations"></ul>
-                      </li>
-                      <li><p>De inhoud valt buiten de werkingssfeer van de toepasselijke wetgeving</p></li>
-                    </ol>
-                  </vl-typography>
-                </div>
+                <div id="inaccessible-content" is="vl-column" data-vl-size="12" data-vl-medium-size="12"></div>
                 <div id="setup-accessibility-statement" is="vl-column" data-vl-size="12" data-vl-medium-size="12">
                   <h3 is="vl-h3">Opstelling van deze toegankelijkheidsverklaring</h3>
                   <p>
@@ -265,6 +245,8 @@ export class VlAccessibilityStatement extends vlElement(HTMLElement) {
       case props.dateModified:
         this.changeElement(this.dateModifiedElement, newValue);
         break;
+      case props.compliance:
+        this.handleCompliance(newValue);
     }
   }
 
@@ -273,12 +255,26 @@ export class VlAccessibilityStatement extends vlElement(HTMLElement) {
   }
 
   connectedCallback() {
+    const observer = new MutationObserver(function (mutations) {
+      mutations.forEach(function (mutation) {
+        // Detect <img> insertion
+        if (mutation.addedNodes.length) console.info('Node added: ', mutation.addedNodes[0]);
+      });
+    });
+
+    observer.observe(this, { childList: true });
+
+    this.inaccessibleContentElement.innerHTML = this.inaccessibleContentTemplate;
+    this.handleCompliance(this.getAttribute(props.compliance) || COMPLIANCE_STATUS.PARTIALLY_COMPLIANT);
     this.changeElement(this.versionElement, this.getAttribute(props.version) || '1.0.0');
     this.changeElement(this.applicationElement, this.getAttribute(props.application) || 'deze applicatie');
     this.dateElements.forEach((element) =>
       this.changeElement(element, this.getAttribute(props.date) || '20 juli 2021'),
     );
     this.changeElement(this.dateModifiedElement, this.getAttribute(props.dateModified) || '20 juli 2021');
+
+    // if (this.getAttribute(props.compliance) !== COMPLIANCE_STATUS.FULLY_COMPLIANT) {
+    //   console.log('is not fully comp');
     this.limitationChildren.forEach((child) => {
       if (child.hasAttribute('data-vl-timing')) {
         this.temporaryLimitationElement.appendChild(child);
@@ -286,6 +282,96 @@ export class VlAccessibilityStatement extends vlElement(HTMLElement) {
         this.permanentLimitationElement.appendChild(child);
       }
     });
+    // }
+  }
+
+  handleCompliance(compliance) {
+    switch (compliance) {
+      case COMPLIANCE_STATUS.FULLY_COMPLIANT:
+        this.changeElement(this.complianceElement, this.fullyCompliantTemplate);
+        this.hideInaccessibleContentElement();
+        break;
+      case COMPLIANCE_STATUS.PARTIALLY_COMPLIANT:
+        this.changeElement(this.complianceElement, this.partiallyCompliantTemplate);
+        this.showInaccessibleContentElement();
+        break;
+      case COMPLIANCE_STATUS.NOT_COMPLIANT:
+        this.changeElement(this.complianceElement, this.notCompliantTemplate);
+        this.showInaccessibleContentElement();
+        break;
+      default:
+        this.changeElement(this.complianceElement, this.notCompliantTemplate);
+        this.showInaccessibleContentElement();
+        break;
+    }
+  }
+
+  showInaccessibleContentElement() {
+    if (this.inaccessibleContentElement) {
+      // this.inaccessibleContentElement.innerHTML = this.inaccessibleContentTemplate;
+      this.inaccessibleContentElement.style.display = 'initial';
+    }
+  }
+
+  hideInaccessibleContentElement() {
+    if (this.inaccessibleContentElement) {
+      // this.inaccessibleContentElement.innerHTML = '';
+      this.inaccessibleContentElement.style.display = 'none';
+    }
+  }
+
+  get inaccessibleContentTemplate() {
+    return `<div id="inaccessible-content" is="vl-column" data-vl-size="12" data-vl-medium-size="12">
+        <h3 is="vl-h3">Niet-toegankelijke inhoud</h3>
+        <p>De onderstaande inhoud is niet-toegankelijk om de volgende reden(en):</p>
+        <vl-typography>
+          <ol>
+            <li>
+              <p>Niet-naleving van het bestuursdecreet</p>
+              <ul id="temporary-limitations"></ul>
+            </li>
+            <li>
+              <p>Onevenredige last</p>
+              <ul id="permanent-limitations"></ul>
+            </li>
+            <li>
+              <p>De inhoud valt buiten de werkingssfeer van de toepasselijke wetgeving</p>
+            </li>
+          </ol>
+        </vl-typography>
+      </div>`;
+  }
+
+  get fullyCompliantTemplate() {
+    return `Deze website voldoet volledig aan de
+    ${this.wcagLinkTemplate}.`;
+  }
+
+  get partiallyCompliantTemplate() {
+    return `Deze website voldoet gedeeltelijk aan de
+    ${this.wcagLinkTemplate}
+    omdat nog niet aan de onderstaande eisen is voldaan.`;
+  }
+
+  get notCompliantTemplate() {
+    return `Deze website voldoet niet aan de
+    ${this.wcagLinkTemplate}
+    omdat nog niet aan de onderstaande eisen is voldaan.`;
+  }
+
+  get wcagLinkTemplate() {
+    return `<a is="vl-link" href="https://www.w3.org/TR/WCAG21" target="_blank">
+      Web Content Accessibility Guidelines versie 2.1 niveau AA
+      <span is="vl-icon" data-vl-icon="external" data-vl-after data-vl-light></span>
+    </a>`;
+  }
+
+  get inaccessibleContentElement() {
+    return this.shadowRoot.querySelector('#inaccessible-content');
+  }
+
+  get complianceElement() {
+    return this.shadowRoot.querySelector('#compliance-status p');
   }
 
   get versionElement() {

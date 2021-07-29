@@ -11,7 +11,7 @@ import 'vl-ui-typography';
  *
  * @property {string} data-vl-description - Attribuut wordt gebruikt om een bescrhijving te geven aan de beperking.
  * @property {string} data-vl-alternative - Attribuut wordt gebruikt om een alternatief op de beperking te beschrijven.
- * @property {string} data-vl-timing - Attribuut wordt gebruikt om aan te geven wanneer de beperking.
+ * @property {string} data-vl-timing - Attribuut wordt gebruikt om aan te geven wanneer of in welke release het probleem zal worden opgelost.
  *
  * @see {@link https://www.github.com/milieuinfo/webcomponent-vl-ui-accessibility/releases/latest|Release notes}
  * @see {@link https://www.github.com/milieuinfo/webcomponent-vl-ui-accessibility/issues|Issues}
