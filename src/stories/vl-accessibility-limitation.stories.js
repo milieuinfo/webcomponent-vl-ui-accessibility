@@ -2,8 +2,14 @@ import { html } from 'lit-html';
 import '../vl-accessibility-limitation';
 import '../style.css';
 import 'vl-ui-typography';
-import { dummyLimitationProps } from './dummyLimitationProps';
 
+const dummyLimitationProps = {
+  description:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+  alternative:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.',
+  timing: 'Lorem ipsum dolor sit amet',
+};
 const { description, alternative, timing } = dummyLimitationProps;
 
 export default {
