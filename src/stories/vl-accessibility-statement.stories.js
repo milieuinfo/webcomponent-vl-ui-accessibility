@@ -20,16 +20,12 @@ export default {
       control: { type: 'select', options: ['limitations-01', 'limitations-02'] },
       defaultValue: 'limitations-01',
     },
-    evaluation: {
-      control: { type: 'select', options: ['self-evaluated', 'not-evaluated'] },
-      defaultValue: 'self-evaluated',
-    },
   },
 };
 
 export const Default = () => html` <vl-accessibility-statement></vl-accessibility-statement>`;
 
-export const WithProps = ({ application, version, date, dateModified, compliance, limitations, evaluation }) => {
+export const WithProps = ({ application, version, date, dateModified, compliance, limitations }) => {
   return html`<script id="limitations-01" type="application/json">
       [
         {
@@ -63,7 +59,6 @@ export const WithProps = ({ application, version, date, dateModified, compliance
       dateModified=${dateModified}
       compliance=${compliance}
       limitations=${limitations}
-      evaluation=${evaluation}
     ></vl-accessibility-statement>`;
 };
 
