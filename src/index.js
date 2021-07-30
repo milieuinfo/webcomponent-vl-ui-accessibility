@@ -1,1 +1,1 @@
-export * from '../dist/vl-accessibility-lit.src.js';
+export * from '../dist/vl-accessibility.src.js';
