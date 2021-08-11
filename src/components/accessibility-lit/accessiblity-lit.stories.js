@@ -1,10 +1,9 @@
 import { html } from 'lit-html';
-import '../vl-accessibility-lit';
-import '../vl-accessibility-limitation';
-import '../style.css';
+import '../accessibility-lit';
+import '../accessibility-lit/style.css';
 
 export default {
-  title: 'Accessibility/vl-accessibility-statement',
+  title: 'Components/vl-accessibility-statement',
   args: {
     application: 'deze applicatie',
     version: '1.0.0',
@@ -20,12 +19,16 @@ export default {
       control: { type: 'select', options: ['limitations-01', 'limitations-02'] },
       defaultValue: 'limitations-01',
     },
+    evaluation: {
+      control: { type: 'select', options: ['expert-evaluated', 'self-evaluated', 'not-evaluated'] },
+      defaultValue: 'self-evaluated',
+    },
   },
 };
 
-export const Default = () => html` <vl-accessibility-statement></vl-accessibility-statement>`;
+export const Default = () => html`<vl-accessibility-statement></vl-accessibility-statement>`;
 
-export const WithProps = ({ application, version, date, dateModified, compliance, limitations }) => {
+export const WithProps = ({ application, version, date, dateModified, compliance, limitations, evaluation }) => {
   return html`<script id="limitations-01" type="application/json">
       [
         {
@@ -59,8 +62,6 @@ export const WithProps = ({ application, version, date, dateModified, compliance
       dateModified=${dateModified}
       compliance=${compliance}
       limitations=${limitations}
+      evaluation=${evaluation}
     ></vl-accessibility-statement>`;
 };
-
-// compliance = fully-compliant || partially-compliant || not-compliant
-// tested-by = thirth-party || team || not-tested

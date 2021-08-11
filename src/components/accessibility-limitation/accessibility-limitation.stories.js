@@ -1,6 +1,6 @@
 import { html } from 'lit-html';
-import '../vl-accessibility-limitation';
-import '../style.css';
+import '../accessibility-limitation';
+import '../../components/accessibility-lit/style.css';
 import 'vl-ui-typography';
 
 const dummyLimitationProps = {
@@ -13,7 +13,7 @@ const dummyLimitationProps = {
 const { description, alternative, timing } = dummyLimitationProps;
 
 export default {
-  title: 'Accessibility/vl-accessibility-limitation',
+  title: 'Components/vl-accessibility-limitation',
   args: {
     description,
     alternative,
