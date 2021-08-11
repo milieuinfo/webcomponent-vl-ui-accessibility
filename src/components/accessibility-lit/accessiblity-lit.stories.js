@@ -1,6 +1,6 @@
 import { html } from 'lit-html';
 import '../accessibility-lit';
-import '../accessibility-lit/style.css';
+import '../../style.css';
 
 export default {
   title: 'Components/vl-accessibility-statement',

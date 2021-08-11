@@ -1,6 +1,6 @@
 import { html } from 'lit-html';
 import '../accessibility-limitation';
-import '../../components/accessibility-lit/style.css';
+import '../../style.css';
 import 'vl-ui-typography';
 
 const dummyLimitationProps = {

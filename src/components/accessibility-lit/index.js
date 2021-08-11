@@ -61,7 +61,7 @@ export class VlAccessibility extends LitElement {
         @import '/node_modules/vl-ui-icon/dist/style.css';
         @import '/node_modules/vl-ui-link/dist/style.css';
         @import '/node_modules/vl-ui-icon/dist/style.css';
-        @import './node_modules/vl-ui-properties/dist/style.css';
+        @import '/node_modules/vl-ui-properties/dist/style.css';
       </style>
       ${header()} ${title(props)} ${content(props)}`;
   }
