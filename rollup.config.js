@@ -4,12 +4,12 @@ import minifyHTML from 'rollup-plugin-minify-html-literals';
 import copy from 'rollup-plugin-copy';
 
 const copyConfig = {
-  targets: [{ src: 'src/components/*/*.stories.js', dest: 'build/stories/' }],
+  targets: [{ src: 'src/*', dest: 'distribute' }],
 };
 const config = {
   input: 'src/index.js',
   output: {
-    dir: 'build',
+    dir: 'distribute',
     format: 'es',
   },
   plugins: [minifyHTML(), copy(copyConfig), resolve()],
