@@ -409,4 +409,4 @@ export class VlAccessibilityStatement extends vlElement(HTMLElement) {
   }
 }
 
-define('vl-accessibility-statement', VlAccessibilityStatement);
+define('vl-accessibility-statement-native', VlAccessibilityStatement);

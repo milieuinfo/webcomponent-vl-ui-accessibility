@@ -1,9 +1,9 @@
 import { html } from 'lit-html';
-import '../accessibility-lit';
+import '../accessibility-statement-native';
 import '../../style.css';
 
 export default {
-  title: 'Components/vl-accessibility-statement',
+  title: 'Components/vl-accessibility-statement-native',
   args: {
     application: 'deze applicatie',
     version: '1.0.0',
@@ -55,7 +55,7 @@ export const WithProps = ({ application, version, date, dateModified, compliance
         }
       ]
     </script>
-    <vl-accessibility-statement
+    <vl-accessibility-statement-native
       application=${application}
       version=${version}
       date=${date}
@@ -63,5 +63,5 @@ export const WithProps = ({ application, version, date, dateModified, compliance
       compliance=${compliance}
       limitations=${limitations}
       evaluation=${evaluation}
-    ></vl-accessibility-statement>`;
+    ></vl-accessibility-statement-native>`;
 };
