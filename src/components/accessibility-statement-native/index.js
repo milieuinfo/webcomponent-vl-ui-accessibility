@@ -1,15 +1,15 @@
-import { vlElement, define } from '/node_modules/vl-ui-core/dist/vl-core.js';
-import '/node_modules/vl-ui-functional-header/dist/vl-functional-header.js';
-import '/node_modules/vl-ui-grid/dist/vl-grid.js';
-import '/node_modules/vl-ui-titles/dist/vl-titles.js';
-import '/node_modules/vl-ui-introduction/dist/vl-introduction.js';
-import '/node_modules/vl-ui-icon/dist/vl-icon.js';
-import '/node_modules/vl-ui-link/dist/vl-link.js';
-import '/node_modules/vl-ui-typography/dist/vl-typography.js';
-import '/node_modules/vl-ui-link/dist/vl-link.js';
-import '/node_modules/vl-ui-icon/dist/vl-icon.js';
-import '/node_modules/vl-ui-side-navigation/dist/vl-side-navigation-all.js';
-import '/node_modules/vl-ui-properties/dist/vl-properties.js';
+import { vlElement, define } from 'vl-ui-core';
+import 'vl-ui-functional-header';
+import 'vl-ui-grid';
+import 'vl-ui-titles';
+import 'vl-ui-introduction';
+import 'vl-ui-icon';
+import 'vl-ui-link';
+import 'vl-ui-typography';
+import 'vl-ui-link';
+import 'vl-ui-icon';
+import 'vl-ui-side-navigation';
+import 'vl-ui-properties';
 
 /**
  * VlAccessibilityStatement
@@ -31,11 +31,12 @@ import '/node_modules/vl-ui-properties/dist/vl-properties.js';
  */
 
 const props = {
-  version: 'data-vl-version',
-  application: 'data-vl-application',
-  date: 'data-vl-date',
-  dateModified: 'data-vl-date-modified',
-  compliance: 'data-vl-compliance',
+  version: 'version',
+  application: 'application',
+  date: 'date',
+  dateModified: 'datemodified',
+  compliance: 'compliance',
+  limitations: 'limitations',
 };
 
 const COMPLIANCE_STATUS = {
@@ -67,7 +68,7 @@ const template = `<style>
       </div>
       <div is="vl-column" data-vl-size="10">
         <p is="vl-introduction">
-          <span>Versie</span> <span id="introduction-version"></span> - <span id="introduction-date">{date}</span>
+          Versie <span id="introduction-version"></span> - <span id="introduction-date"></span>
         </p>
       </div>
       <div is="vl-column" data-vl-size="12" data-vl-medium-size="12">
@@ -123,7 +124,25 @@ const template = `<style>
                   <h3 is="vl-h3">Nalevingsstatus</h3>
                   <p></p>
                 </div>
-                <div id="inaccessible-content" is="vl-column" data-vl-size="12" data-vl-medium-size="12"></div>
+                <div id="inaccessible-content" is="vl-column" data-vl-size="12" data-vl-medium-size="12">
+                  <h3 is="vl-h3">Niet-toegankelijke inhoud</h3>
+                  <p>De onderstaande inhoud is niet-toegankelijk om de volgende reden(en):</p>
+                  <vl-typography>
+                    <ol>
+                      <li>
+                        <p>Niet-naleving van het bestuursdecreet</p>
+                        <ul id="temporary-limitations"></ul>
+                      </li>
+                      <li>
+                        <p>Onevenredige last</p>
+                        <ul id="permanent-limitations"></ul>
+                      </li>
+                      <li>
+                        <p>De inhoud valt buiten de werkingssfeer van de toepasselijke wetgeving</p>
+                      </li>
+                    </ol>
+                  </vl-typography>
+                </div>
                 <div id="setup-accessibility-statement" is="vl-column" data-vl-size="12" data-vl-medium-size="12">
                   <h3 is="vl-h3">Opstelling van deze toegankelijkheidsverklaring</h3>
                   <p>
@@ -231,6 +250,26 @@ export class VlAccessibilityStatement extends vlElement(HTMLElement) {
     return Object.keys(props).map((key) => props[key]);
   }
 
+  set limitationsArray(val) {
+    this._limitationsArray = val;
+    this.temporaryLimitationElement.innerHTML = this._limitationsArray
+      .filter((limitationsObject) => !!limitationsObject.timing && limitationsObject)
+      .map(({ description, alternative, timing }) => {
+        console.log(description, alternative, timing);
+        const htmk = `<vl-accessibility-limitation data-vl-description=${description}
+        data-vl-alternative=${alternative}
+        data-vl-timing=${timing}></vl-accessibility-limitation>`;
+        return htmk;
+      });
+    this.permanentLimitationElement.innerHTML = this._limitationsArray
+      .filter((limitationsObject) => limitationsObject.timing === undefined && limitationsObject)
+      .map(
+        (limitationObject) => `<vl-accessibility-limitation data-vl-description=${limitationObject.description}
+      data-vl-alternative=${limitationObject.alternative}>
+      </vl-accessibility-limitation>`,
+      );
+  }
+
   attributeChangedCallback(name, oldValue, newValue) {
     switch (name) {
       case props.version:
@@ -247,6 +286,10 @@ export class VlAccessibilityStatement extends vlElement(HTMLElement) {
         break;
       case props.compliance:
         this.handleCompliance(newValue);
+        break;
+      case props.limitations:
+        this.setLimitations();
+        break;
     }
   }
 
@@ -255,16 +298,7 @@ export class VlAccessibilityStatement extends vlElement(HTMLElement) {
   }
 
   connectedCallback() {
-    const observer = new MutationObserver(function (mutations) {
-      mutations.forEach(function (mutation) {
-        // Detect <img> insertion
-        if (mutation.addedNodes.length) console.info('Node added: ', mutation.addedNodes[0]);
-      });
-    });
-
-    observer.observe(this, { childList: true });
-
-    this.inaccessibleContentElement.innerHTML = this.inaccessibleContentTemplate;
+    // this.inaccessibleContentElement.innerHTML = this.inaccessibleContentTemplate;
     this.handleCompliance(this.getAttribute(props.compliance) || COMPLIANCE_STATUS.PARTIALLY_COMPLIANT);
     this.changeElement(this.versionElement, this.getAttribute(props.version) || '1.0.0');
     this.changeElement(this.applicationElement, this.getAttribute(props.application) || 'deze applicatie');
@@ -272,17 +306,7 @@ export class VlAccessibilityStatement extends vlElement(HTMLElement) {
       this.changeElement(element, this.getAttribute(props.date) || '20 juli 2021'),
     );
     this.changeElement(this.dateModifiedElement, this.getAttribute(props.dateModified) || '20 juli 2021');
-
-    // if (this.getAttribute(props.compliance) !== COMPLIANCE_STATUS.FULLY_COMPLIANT) {
-    //   console.log('is not fully comp');
-    this.limitationChildren.forEach((child) => {
-      if (child.hasAttribute('data-vl-timing')) {
-        this.temporaryLimitationElement.appendChild(child);
-      } else {
-        this.permanentLimitationElement.appendChild(child);
-      }
-    });
-    // }
+    this.setLimitations();
   }
 
   handleCompliance(compliance) {
@@ -318,28 +342,6 @@ export class VlAccessibilityStatement extends vlElement(HTMLElement) {
       // this.inaccessibleContentElement.innerHTML = '';
       this.inaccessibleContentElement.style.display = 'none';
     }
-  }
-
-  get inaccessibleContentTemplate() {
-    return `<div id="inaccessible-content" is="vl-column" data-vl-size="12" data-vl-medium-size="12">
-        <h3 is="vl-h3">Niet-toegankelijke inhoud</h3>
-        <p>De onderstaande inhoud is niet-toegankelijk om de volgende reden(en):</p>
-        <vl-typography>
-          <ol>
-            <li>
-              <p>Niet-naleving van het bestuursdecreet</p>
-              <ul id="temporary-limitations"></ul>
-            </li>
-            <li>
-              <p>Onevenredige last</p>
-              <ul id="permanent-limitations"></ul>
-            </li>
-            <li>
-              <p>De inhoud valt buiten de werkingssfeer van de toepasselijke wetgeving</p>
-            </li>
-          </ol>
-        </vl-typography>
-      </div>`;
   }
 
   get fullyCompliantTemplate() {
@@ -398,8 +400,11 @@ export class VlAccessibilityStatement extends vlElement(HTMLElement) {
     return this.shadowRoot.querySelector('#permanent-limitations');
   }
 
-  get limitationChildren() {
-    return this.querySelectorAll('vl-accessibility-limitation');
+  setLimitations() {
+    const limitationsScript = document.getElementById(this.getAttribute(props.limitations));
+    if (limitationsScript) {
+      this.limitationsArray = JSON.parse(limitationsScript.innerHTML);
+    }
   }
 
   changeElement(element, value) {

@@ -1,6 +1,6 @@
 import { html } from 'lit';
 import { COMPLIANCE_STATUS, EVALUATION_STATUS } from '../../enums';
-import { complianceStatus, inaccessibleContent } from '../../templates';
+import { complianceStatus, inaccessibleContent } from '..';
 import { setupStatement } from '../setupStatement';
 
 export const content = (props) => {

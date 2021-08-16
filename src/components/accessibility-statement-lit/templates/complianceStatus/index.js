@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { wcagLink } from '../../templates';
+import { wcagLink } from '..';
 import { COMPLIANCE_STATUS, EVALUATION_STATUS } from '../../enums';
 
 export const complianceStatus = ({ compliance, evaluation }) => {

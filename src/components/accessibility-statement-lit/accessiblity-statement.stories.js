@@ -1,9 +1,9 @@
 import { html } from 'lit-html';
-import '../accessibility-statement';
+import '../accessibility-statement-lit';
 import '../../style.css';
 
 export default {
-  title: 'Components/vl-accessibility-statement',
+  title: 'Components/vl-accessibility-statement-lit',
   args: {
     application: 'deze applicatie',
     version: '1.0.0',

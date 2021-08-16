@@ -20,11 +20,11 @@ export const inaccessibleContent = ({ compliance, evaluation, limitationsArray }
                     <p>Niet-naleving van het bestuursdecreet</p>
                     <ul>
                       ${temporaryLimitations.map(
-                        (limitationObject) =>
+                        ({ description, alternative, timing }) =>
                           html`<vl-accessibility-limitation
-                            data-vl-description=${limitationObject.description}
-                            data-vl-alternative=${limitationObject.alternative}
-                            data-vl-timing=${limitationObject.timing}
+                            data-vl-description=${description}
+                            data-vl-alternative=${alternative}
+                            data-vl-timing=${timing}
                           ></vl-accessibility-limitation>`,
                       )}
                     </ul>
@@ -33,10 +33,10 @@ export const inaccessibleContent = ({ compliance, evaluation, limitationsArray }
                     <p>Onevenredige last</p>
                     <ul>
                       ${permanentLimitations.map(
-                        (limitationObject) =>
+                        ({ description, alternative }) =>
                           html`<vl-accessibility-limitation
-                            data-vl-description=${limitationObject.description}
-                            data-vl-alternative=${limitationObject.alternative}
+                            data-vl-description=${description}
+                            data-vl-alternative=${alternative}
                           ></vl-accessibility-limitation>`,
                       )}
                     </ul>
