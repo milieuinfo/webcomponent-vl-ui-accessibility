@@ -6,7 +6,7 @@ export default {
   title: 'Components/vl-accessibility-statement-old',
   args: {
     application: 'deze applicatie',
-    version: 'new',
+    version: '1.0.0',
     date: '20 juli 2021',
     dateModified: '20 juli 2021',
   },

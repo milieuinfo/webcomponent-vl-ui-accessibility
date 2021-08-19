@@ -26,7 +26,7 @@ export default {
   },
 };
 
-export const Default = () => html`<vl-accessibility-statement></vl-accessibility-statement>`;
+export const Default = () => html`<vl-accessibility-statement-native></vl-accessibility-statement-native>`;
 
 export const WithProps = ({ application, version, date, dateModified, compliance, limitations, evaluation }) => {
   return html`<script id="limitations-01" type="application/json">
